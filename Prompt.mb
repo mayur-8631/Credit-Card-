@@ -1,0 +1,399 @@
+Build a production-grade fintech web application called "STACKR" — an intelligent credit card recommendation and comparison platform for Indian users.
+
+The product must not be a UI demo. It must function as a real-world, data-driven, personalized decision engine with backend infrastructure, APIs, user accounts, and monetization via affiliate integrations.
+
+---
+
+## 🎯 CORE OBJECTIVE
+
+Help users discover the best credit cards based on:
+
+* Their actual spending behavior
+* Financial profile (income, credit score)
+* Preferences (travel, cashback, fuel, insurance)
+
+The system must:
+
+1. Calculate real yearly value (₹) for each card
+2. Rank cards dynamically using weighted + computed logic
+3. Provide explainable recommendations
+4. Enable comparison and application
+
+---
+
+## 🧱 TECH STACK (STRICT)
+
+Frontend:
+
+* React (Next.js preferred)
+* TailwindCSS (minimal, clean, professional — NOT flashy)
+* Framer Motion (subtle animations)
+
+Backend:
+
+* Node.js + Express OR NestJS
+* REST API (GraphQL optional)
+
+Database:
+
+* PostgreSQL (structured financial data)
+* Redis (caching frequently accessed card rankings)
+
+Auth:
+
+* Firebase Auth OR JWT-based auth
+
+Hosting:
+
+* Vercel (frontend)
+* AWS / Render / Railway (backend)
+
+---
+
+## 📊 DATABASE DESIGN (CRITICAL — POINT 13)
+
+Design normalized tables:
+
+1. users
+
+* id
+* name
+* email
+* password_hash
+* monthly_income
+* credit_score
+* spending_profile (JSON: categories with ₹ values)
+* created_at
+
+2. cards
+
+* id
+* name
+* bank
+* type (cashback, travel, fuel, rewards)
+* joining_fee
+* annual_fee
+* reward_rate
+* cashback_rules (JSON)
+* lounge_access
+* fuel_benefits
+* insurance_details
+* eligibility_score_min
+* affiliate_link
+* last_updated
+
+3. offers
+
+* id
+* card_id
+* title
+* description
+* expiry_date
+* bonus_value
+
+4. user_activity
+
+* id
+* user_id
+* action (viewed, compared, applied)
+* card_id
+* timestamp
+
+5. applications (for tracking monetization)
+
+* id
+* user_id
+* card_id
+* status (clicked, redirected, approved)
+* affiliate_source
+* timestamp
+
+---
+
+## 🌐 DATA INTEGRATION (POINT 13 - ADVANCED)
+
+Implement real-world data ingestion:
+
+1. APIs / Scraping:
+
+* Bank websites (HDFC, SBI, Axis, ICICI)
+* Financial aggregators (Paisabazaar, BankBazaar)
+* RBI / public financial data
+
+2. Build a cron job system:
+
+* Refresh card data every 24 hours
+* Validate:
+
+  * Fees
+  * Rewards
+  * Offers
+
+3. Data normalization layer:
+
+* Convert all reward formats into unified structure:
+  Example:
+
+  * cashback_percentage
+  * reward_points_value (₹ equivalent)
+
+4. Fallback system:
+
+* If API fails → use last cached data (Redis)
+
+---
+
+## 🧠 RECOMMENDATION ENGINE (CORE LOGIC)
+
+Inputs:
+
+* Monthly spend per category:
+
+  * shopping
+  * travel
+  * fuel
+  * bills
+* Income
+* Credit score
+* Preferences (slider weights)
+
+Processing:
+
+1. Calculate yearly spend
+
+2. Apply card-specific reward rules
+
+3. Compute:
+
+   * Total cashback (₹)
+   * Total fees
+   * Net benefit = cashback - fees
+
+4. Generate score:
+   score = weighted(normalized benefits + perks + eligibility match)
+
+5. Output:
+
+* Top ranked cards
+* Exact ₹ benefit/year
+
+---
+
+## 📈 CASHBACK CALCULATOR (REAL)
+
+User inputs spending → system outputs:
+
+* Cashback per card
+* Monthly + yearly breakdown
+
+Add:
+
+* Graph visualization (bar chart)
+* “Best card saves you ₹X more than #2”
+
+---
+
+## 👤 USER PROFILE SYSTEM
+
+Features:
+
+* Signup/Login
+* Save preferences
+* Save pinned cards
+* Track comparisons
+* View past recommendations
+
+Use:
+
+* LocalStorage (fallback)
+* DB sync when logged in
+
+---
+
+## 📊 CREDIT SCORE SIMULATOR
+
+Inputs:
+
+* Current score
+* Card usage %
+* Payment behavior
+
+Output:
+
+* Predicted score change
+* Risk level
+
+---
+
+## 🔍 FILTERS + SEARCH
+
+Add filters:
+
+* Lifetime free
+* Min cashback %
+* Lounge access
+* Low CIBIL requirement
+
+Search:
+
+* Card name
+* Bank
+
+---
+
+## 📄 CARD DETAIL PAGE
+
+Each card must have:
+
+* Benefits
+* Hidden charges
+* Pros / Cons
+* Best use-case
+* Eligibility
+* Real cashback simulation
+
+---
+
+## 🔔 ALERT SYSTEM
+
+* Offer expiry alerts
+* New bonus alerts
+* Price drop equivalent (rare but useful)
+
+Use:
+
+* Email + optional push notifications
+
+---
+
+## 🆚 ADVANCED COMPARISON
+
+* Compare up to 4 cards
+* Show:
+
+  * Fees
+  * Cashback
+  * Benefits
+* Add:
+
+  * Radar chart
+  * Winner highlighting
+
+---
+
+## 📊 VISUALIZATION
+
+* Bar charts (cashback)
+* Pie chart (spending)
+* Radar chart (card strengths)
+
+---
+
+## 🧠 SMART INSIGHTS PANEL
+
+Generate insights like:
+
+* “You overspend on fuel → fuel card recommended”
+* “Travel card not beneficial for your profile”
+
+---
+
+## 📱 MOBILE UX
+
+* Tap-based interactions
+* Sticky CTA
+* Smooth scroll
+
+---
+
+## 💳 APPLY SYSTEM (POINT 14 — CRITICAL)
+
+This is monetization core.
+
+1. Each card must have:
+
+* affiliate_link (tracked URL)
+
+2. When user clicks APPLY:
+
+* Redirect via backend:
+  /redirect?card_id=123
+
+3. Backend must:
+
+* Log click in "applications" table
+* Append tracking params:
+
+  * utm_source=stackr
+  * user_id
+
+4. Redirect to bank page
+
+5. Track:
+
+* Click-through rate (CTR)
+* Conversion (if API available)
+
+6. Add fallback:
+
+* If affiliate not available → direct bank link
+
+---
+
+## 💰 MONETIZATION SYSTEM
+
+Revenue streams:
+
+1. Affiliate commissions per approved card
+2. Sponsored cards (mark as “Sponsored”)
+3. Premium user plan (advanced analytics)
+
+---
+
+## 🧠 EXPLAINABLE AI (TRUST)
+
+For each recommendation show:
+
+* Why this card is ranked #1
+* Example:
+
+  * “You spend ₹8k/month on fuel → this card gives highest return”
+
+---
+
+## 🧪 TESTING
+
+* Unit tests (calculation engine)
+* API testing
+* Edge cases:
+
+  * No spend data
+  * Low credit score
+
+---
+
+## 🚀 FINAL OUTPUT EXPECTATION
+
+The system must:
+
+* Feel like a real fintech product (not UI demo)
+* Provide accurate ₹-based recommendations
+* Be scalable and data-driven
+* Support real monetization
+
+Avoid:
+
+* Dummy data
+* Static scoring only
+* Over-designed flashy UI
+
+Focus on:
+
+* Accuracy
+* Trust
+* Performance
+* Real user value
+
+---
+
+## END OF BUILD
