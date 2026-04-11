@@ -246,7 +246,7 @@ export default function Home() {
                         <div className="sp-row"><span className="sk">MIN CIBIL</span><span className="sv">{c.cibil}</span></div>
                       </div>
                       <div className="cr-btns">
-                        <button className="btn-apply-deck" onClick={(e) => e.stopPropagation()}>APPLY</button>
+                        <button className="btn-apply-deck" onClick={(e) => { e.stopPropagation(); window.open(`http://localhost:4000/api/cards/apply/${c.id}`, '_blank'); }}>APPLY</button>
                         <button className={`btn-pin ${isPinned ? 'pinned' : ''}`} onClick={(e) => { e.stopPropagation(); togglePin(c.id); }}>📌</button>
                       </div>
                     </div>

@@ -1,0 +1,83 @@
+[
+  {
+    "card_id": 1,
+    "bank_name": "HDFC Bank",
+    "offer_type": "welcome bonus",
+    "offer_value": 1000,
+    "start_date": "2024-01-01",
+    "end_date": "2024-01-31",
+    "season_tag": "new year"
+  },
+  {
+    "card_id": 1,
+    "bank_name": "HDFC Bank",
+    "offer_type": "cashback",
+    "offer_value": 5,
+    "start_date": "2024-10-15",
+    "end_date": "2024-11-15",
+    "season_tag": "festive"
+  },
+  {
+    "card_id": 1,
+    "bank_name": "HDFC Bank",
+    "offer_type": "welcome bonus",
+    "offer_value": 2000,
+    "start_date": "2024-10-15",
+    "end_date": "2024-11-15",
+    "season_tag": "festive"
+  },
+  {
+    "card_id": 6,
+    "bank_name": "SBI Card",
+    "offer_type": "cashback",
+    "offer_value": 7,
+    "start_date": "2024-10-01",
+    "end_date": "2024-10-31",
+    "season_tag": "festive"
+  },
+  {
+    "card_id": 2,
+    "bank_name": "SBI Card",
+    "offer_type": "fee waiver",
+    "offer_value": 499,
+    "start_date": "2024-03-01",
+    "end_date": "2024-03-31",
+    "season_tag": "financial year-end"
+  },
+  {
+    "card_id": 3,
+    "bank_name": "Axis Bank",
+    "offer_type": "travel bonus",
+    "offer_value": 500,
+    "start_date": "2024-05-01",
+    "end_date": "2024-06-30",
+    "season_tag": "summer"
+  },
+  {
+    "card_id": 10,
+    "bank_name": "HSBC",
+    "offer_type": "welcome miles",
+    "offer_value": 10000,
+    "start_date": "2024-11-15",
+    "end_date": "2024-12-31",
+    "season_tag": "festive"
+  },
+  {
+    "card_id": 1,
+    "bank_name": "HDFC Bank",
+    "offer_type": "cashback",
+    "offer_value": 2,
+    "start_date": "2024-02-01",
+    "end_date": "2024-09-30",
+    "season_tag": "regular"
+  },
+  {
+    "card_id": 6,
+    "bank_name": "SBI Card",
+    "offer_type": "cashback",
+    "offer_value": 5,
+    "start_date": "2024-01-01",
+    "end_date": "2024-09-30",
+    "season_tag": "regular"
+  }
+]

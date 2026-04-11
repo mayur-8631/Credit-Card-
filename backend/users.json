@@ -1,0 +1,42 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Test User",
+      "email": "test@stackr.com",
+      "password_hash": "$2b$10$h3PmQ6swFyicnmH63.WD8O1V13I89ruqFHj/CuI0xfSbC6a4WpWsG",
+      "monthly_income": 75000,
+      "credit_score": 750,
+      "spending_profile": {}
+    },
+    {
+      "id": 2,
+      "name": "testuser_random_123",
+      "email": "testuser_random_123@example.com",
+      "password_hash": "$2b$10$Mj9I8wQUGMhtmqzRrQMSh.89idT3.kJNF5jw2I64ilppJGubxg/Z2",
+      "monthly_income": 0,
+      "credit_score": 750,
+      "spending_profile": {},
+      "subscription": {
+        "plan_type": "free",
+        "status": "active",
+        "end_date": null
+      }
+    },
+    {
+      "id": 3,
+      "name": "test_random123",
+      "email": "test_random123@gmail.com",
+      "password_hash": "$2b$10$44JFBsnX3Duf8SjCLRmlwOWT21boFNgfGw8n5fosqDAEyq0B8YnYe",
+      "monthly_income": 0,
+      "credit_score": 750,
+      "spending_profile": {},
+      "subscription": {
+        "plan_type": "free",
+        "status": "active",
+        "end_date": null
+      }
+    }
+  ],
+  "nextId": 4
+}

@@ -26,6 +26,22 @@ CREATE TABLE IF NOT EXISTS cards (
   last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE IF NOT EXISTS user_cards (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  card_name VARCHAR(150) NOT NULL,
+  bank VARCHAR(100) NOT NULL,
+  card_type VARCHAR(50) NOT NULL,
+  credit_limit INTEGER DEFAULT 0,
+  annual_fee INTEGER DEFAULT 0,
+  interest_rate DECIMAL(5,2) DEFAULT 0.0,
+  billing_cycle_days INTEGER DEFAULT 30,
+  due_date INTEGER DEFAULT 1, -- Day of the month
+  reward_rates JSONB DEFAULT '{"general": 0, "online": 0, "fuel": 0, "travel": 0, "dining": 0}',
+  joining_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 CREATE TABLE IF NOT EXISTS offers (
   id SERIAL PRIMARY KEY,
   card_id INTEGER REFERENCES cards(id) ON DELETE CASCADE,
@@ -50,6 +66,19 @@ CREATE TABLE IF NOT EXISTS applications (
   status VARCHAR(50) DEFAULT 'clicked', -- (clicked, redirected, approved)
   affiliate_source VARCHAR(100),
   timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS user_subscriptions (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  plan_type VARCHAR(50) DEFAULT 'free', -- (free, pro)
+  status VARCHAR(50) DEFAULT 'active', -- (active, inactive, expired)
+  start_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  end_date TIMESTAMP,
+  razorpay_payment_id VARCHAR(255),
+  razorpay_order_id VARCHAR(255),
+  razorpay_signature VARCHAR(255),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 -- Seed Data (Basic data for testing)

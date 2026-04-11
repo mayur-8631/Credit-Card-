@@ -88,7 +88,7 @@ export default function CalculatorPage() {
 
             {/* Spending Pie Chart */}
             <div style={{ height: 200, marginTop: 20 }}>
-              <ResponsiveContainer width="100%" height="100%">
+              <ResponsiveContainer width="99%" height="100%">
                 <PieChart>
                   <Pie data={pieData} cx="50%" cy="50%" innerRadius={50} outerRadius={80} paddingAngle={3} dataKey="value">
                     {pieData.map((_, i) => <Cell key={i} fill={SPEND_COLORS[i % SPEND_COLORS.length]} />)}
@@ -127,7 +127,7 @@ export default function CalculatorPage() {
             <div style={{ background: 'var(--ink2)', border: '1px solid var(--ghost)', borderRadius: 'var(--r)', padding: 24, flex: 1, minHeight: 380 }}>
               <h3 style={{ fontSize: '1.1rem', color: 'var(--text-hi)', marginBottom: 20 }}>Annual Net Benefit (₹)</h3>
               {results.length > 0 ? (
-                <ResponsiveContainer width="100%" height={300}>
+                <ResponsiveContainer width="99%" height={300}>
                   <BarChart data={results} margin={{ top: 10, right: 10, left: 0, bottom: 60 }}>
                     <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" vertical={false} />
                     <XAxis dataKey="name" stroke="rgba(255,255,255,0.3)" fontSize={11} angle={-40} textAnchor="end" />

@@ -1,0 +1,157 @@
+Build an AI-powered feature called "Timing Intelligence Engine" for a fintech platform (STACKR) that predicts the optimal time for a user to apply for a credit card.
+
+---
+
+## 🎯 OBJECTIVE
+
+The system must not only recommend cards, but also advise:
+
+* Whether to apply now
+* Or wait for better offers
+
+It should generate outputs like:
+
+* “Wait 45 days — festive offers historically increase rewards by 20%”
+* “Apply now — current offer is above average”
+
+---
+
+## 📊 DATA REQUIREMENTS (CRITICAL)
+
+1. Historical Offers Dataset (MANDATORY)
+   Structure:
+
+* card_id
+* bank_name
+* offer_type (cashback, welcome bonus, fee waiver)
+* offer_value (₹ or %)
+* start_date
+* end_date
+* season_tag (festive, summer, new year, financial year-end)
+
+Collect from:
+
+* Bank websites
+* Aggregators (Paisabazaar, BankBazaar)
+* Manual seeding (initial phase)
+
+Minimum requirement:
+
+* At least 12–24 months of historical data per card
+
+---
+
+## 🧠 AI / LOGIC LAYER
+
+Step 1: Seasonal Pattern Detection
+
+* Identify patterns like:
+
+  * Diwali → high cashback
+  * March → financial year offers
+  * December → travel bonuses
+
+Step 2: Offer Strength Scoring
+For each offer:
+offer_score = (offer_value normalized) + (rarity weight) + (duration factor)
+
+Step 3: Current Offer Comparison
+
+* Compare current live offer vs historical average
+
+Step 4: Prediction Model
+Use:
+
+* Time series analysis OR
+* Rule-based + ML hybrid
+
+Output:
+
+* Probability of better offer in next 30 / 60 / 90 days
+
+---
+
+## 📥 USER INPUTS
+
+* Selected card
+* Urgency level:
+
+  * Immediate
+  * Flexible
+* Optional: spending profile
+
+---
+
+## 📤 OUTPUT FORMAT (STRICT)
+
+Return structured response:
+
+{
+"decision": "WAIT" | "APPLY_NOW",
+"confidence": "HIGH" | "MEDIUM" | "LOW",
+"wait_days": 45,
+"reasoning": [
+"Festive season historically increases rewards by 18%",
+"Current offer is 12% below yearly average"
+],
+"current_offer_score": 62,
+"historical_avg_score": 78,
+"next_best_window": "October - November"
+}
+
+---
+
+## 🧠 AI EXPLANATION (IMPORTANT)
+
+Always explain in human language:
+
+* Why wait
+* What user gains by waiting
+
+---
+
+## ⚙️ BACKEND IMPLEMENTATION
+
+Create API:
+GET /timing-intelligence?card_id=123&urgency=flexible
+
+Pipeline:
+
+1. Fetch card + offer history
+2. Compute scores
+3. Run prediction logic
+4. Return JSON response
+
+---
+
+## 📊 FRONTEND UI
+
+Show:
+
+* Status badge:
+
+  * 🟢 APPLY NOW
+  * 🟡 WAIT
+* Timeline indicator:
+
+  * “Best window in 30–60 days”
+* Confidence meter
+
+---
+
+## ⚠️ EDGE CASES
+
+* No historical data → fallback to rule-based logic
+* New card → mark confidence LOW
+
+---
+
+## 🚫 AVOID
+
+* Random suggestions
+* Static rules only
+* No explanation
+
+---
+
+## END FEATURE
