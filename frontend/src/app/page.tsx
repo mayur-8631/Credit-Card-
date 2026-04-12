@@ -13,7 +13,7 @@ const PRIORITIES = [
   { key: 'insurance', label: 'Insurance', val: 5 },
 ];
 
-const LOCAL_CARDS = [
+export const LOCAL_CARDS = [
   {id:1,name:"HDFC Millennia",bank:"HDFC Bank",type:"Cashback",grad:"linear-gradient(140deg,#1a1f3a,#2a1f3a)",acc:"#e84393",joining:"₹1,000",annual:"₹1,000",reward:"10x CashPoints",lounge:"4 / yr",cashback:"Up to 5%",fuel:"1% waiver",insurance:"Purchase Protect",welcome:"₹2,000 gift",cibil:"700+",sc:{cashback:9,rewards:7,travel:4,fuel:5,insurance:6},sponsored:true},
   {id:2,name:"SimplyCLICK SBI",bank:"SBI Card",type:"Rewards",grad:"linear-gradient(140deg,#1a2a1f,#1f3a2a)",acc:"#00e5ff",joining:"₹499",annual:"₹499",reward:"10x Reward Pts",lounge:"2 / yr",cashback:"Up to 1.25%",fuel:"None",insurance:"None",welcome:"₹500 welcome",cibil:"680+",sc:{cashback:4,rewards:9,travel:3,fuel:2,insurance:3}},
   {id:3,name:"Axis Neo Travel",bank:"Axis Bank",type:"Travel",grad:"linear-gradient(140deg,#1f1f3a,#1a1f2a)",acc:"#6c5ce7",joining:"Nil",annual:"Nil",reward:"2x Miles",lounge:"2 / yr",cashback:"Up to 1%",fuel:"1% waiver",insurance:"Travel Cover",welcome:"500 bonus pts",cibil:"650+",sc:{cashback:3,rewards:5,travel:9,fuel:4,insurance:7}},

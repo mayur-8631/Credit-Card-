@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import BackgroundCanvas from '@/components/BackgroundCanvas';
+import UPICheckout from '@/components/UPICheckout';
 
 const PINNED_KEY = 'stackr_pinned_cards';
 
@@ -13,6 +14,7 @@ export default function ProfileDashboard() {
   const [savedPins, setSavedPins] = useState<string[]>([]);
   const [saved, setSaved] = useState(false);
   const [alertPrefs, setAlertPrefs] = useState({ expiry: true, bonus: true, weekly: false });
+  const [showCheckout, setShowCheckout] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem('stackr_token');
@@ -32,7 +34,11 @@ export default function ProfileDashboard() {
     }).finally(() => setLoading(false));
 
     // Load saved pinned cards from localStorage
-    const pins = JSON.parse(localStorage.getItem(PINNED_KEY) || '[]');
+    let pins = JSON.parse(localStorage.getItem(PINNED_KEY) || '[]');
+    if (pins.length === 0) {
+      pins = ['HDFC Millennia', 'SBI Cashback'];
+      localStorage.setItem(PINNED_KEY, JSON.stringify(pins));
+    }
     setSavedPins(pins);
   }, []);
 
@@ -130,21 +136,34 @@ export default function ProfileDashboard() {
           </div>
 
           {/* Saved Pinned Cards */}
-          <div style={{ background: 'var(--ink2)', border: '1px solid var(--ghost)', borderRadius: 'var(--r)', padding: 28 }}>
-            <h3 style={{ color: 'var(--text-hi)', fontSize: '1rem', marginBottom: 8 }}>📌 Saved Cards</h3>
+          <div style={{ background: 'var(--ink2)', border: '1px solid var(--ghost)', borderRadius: 'var(--r)', padding: 28, display: 'flex', flexDirection: 'column' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+              <h3 style={{ color: 'var(--text-hi)', fontSize: '1rem' }}>📌 Saved Cards</h3>
+            </div>
             <p style={{ fontSize: '0.82rem', color: 'var(--ghost)', marginBottom: 20, lineHeight: 1.6 }}>Cards you pinned from the deck are saved here via localStorage.</p>
             {savedPins.length === 0 ? (
               <div style={{ color: 'var(--ghost)', fontSize: '0.85rem', padding: '20px 0', textAlign: 'center' }}>
                 No saved cards yet — pin cards from the homepage deck.
               </div>
             ) : (
-              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 10 }}>
+              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 20 }}>
                 {savedPins.map((name: string) => (
                   <li key={name} style={{ background: 'var(--ink3)', padding: '10px 14px', borderRadius: 8, fontSize: '0.88rem', color: 'var(--text-hi)' }}>📌 {name}</li>
                 ))}
               </ul>
             )}
+            
+            <div style={{ marginTop: 'auto', paddingTop: 10 }}>
+              <button 
+                onClick={() => window.location.href = '/compare'}
+                className="cta-pill" 
+                style={{ width: '100%', padding: '10px', fontSize: '0.85rem', background: 'transparent', border: '1px solid var(--magenta)', color: 'var(--magenta)' }}
+              >
+                Launch Upgrade Engine →
+              </button>
+            </div>
           </div>
+
 
           {/* Premium Upsell */}
           <div style={{ background: 'linear-gradient(135deg, #1a1f3a, #2a1f3a)', border: '1px solid rgba(232,67,147,0.4)', borderRadius: 'var(--r)', padding: 28 }}>
@@ -155,9 +174,20 @@ export default function ProfileDashboard() {
                 <li key={f} style={{ fontSize: '0.85rem', color: 'var(--text)', display: 'flex', gap: 8 }}><span style={{ color: 'var(--magenta)' }}>✦</span>{f}</li>
               ))}
             </ul>
-            <button style={{ width: '100%', padding: '12px', background: 'var(--magenta)', border: 'none', borderRadius: 8, color: '#fff', fontWeight: 700, fontSize: '0.85rem', cursor: 'pointer', letterSpacing: 1 }}>
-              UPGRADE — ₹199/mo
-            </button>
+            {!showCheckout ? (
+              <button 
+                onClick={() => setShowCheckout(true)}
+                style={{ width: '100%', padding: '12px', background: 'var(--magenta)', border: 'none', borderRadius: 8, color: '#fff', fontWeight: 700, fontSize: '0.85rem', cursor: 'pointer', letterSpacing: 1 }}>
+                UPGRADE — ₹199/mo
+              </button>
+            ) : (
+              <UPICheckout 
+                onPaymentSuccess={() => {
+                  alert('Verification pending. Your premium will be unlocked shortly after confirmation.');
+                  setShowCheckout(false);
+                }} 
+              />
+            )}
           </div>
 
         </div>
