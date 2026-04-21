@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from 'react';
 import BackgroundCanvas from '@/components/BackgroundCanvas';
-import UPICheckout from '@/components/UPICheckout';
+import RazorpayCheckout from '@/components/RazorpayCheckout';
 
-const PINNED_KEY = 'stackr_pinned_cards';
+const PINNED_KEY = 'credimatch_pinned_cards';
 
 export default function ProfileDashboard() {
   const [user, setUser] = useState<any>(null);
@@ -17,7 +17,7 @@ export default function ProfileDashboard() {
   const [showCheckout, setShowCheckout] = useState(false);
 
   useEffect(() => {
-    const token = localStorage.getItem('stackr_token');
+    const token = localStorage.getItem('credimatch_token');
     if (!token) { window.location.href = '/login'; return; }
 
     fetch('http://localhost:4000/api/auth/me', {
@@ -43,7 +43,7 @@ export default function ProfileDashboard() {
   }, []);
 
   const savePreferences = async () => {
-    const token = localStorage.getItem('stackr_token');
+    const token = localStorage.getItem('credimatch_token');
     await fetch('http://localhost:4000/api/auth/me', {
       method: 'PUT', headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
       body: JSON.stringify({ ...form, spending_profile: {} })
@@ -54,7 +54,7 @@ export default function ProfileDashboard() {
     setTimeout(() => setSaved(false), 2000);
   };
 
-  const logout = () => { localStorage.removeItem('stackr_token'); window.location.href = '/'; };
+  const logout = () => { localStorage.removeItem('credimatch_token'); window.location.href = '/'; };
 
   if (loading) return <div style={{ padding: 120, textAlign: 'center', color: 'var(--ghost)' }}>Loading profile...</div>;
   if (!user) return null;
@@ -115,7 +115,7 @@ export default function ProfileDashboard() {
           {/* Alert Subscriptions */}
           <div style={{ background: 'var(--ink2)', border: '1px solid var(--ghost)', borderRadius: 'var(--r)', padding: 28 }}>
             <h3 style={{ color: 'var(--text-hi)', fontSize: '1rem', marginBottom: 8 }}>🔔 Alert Subscriptions</h3>
-            <p style={{ fontSize: '0.82rem', color: 'var(--ghost)', marginBottom: 24, lineHeight: 1.6 }}>Choose which notifications you want from STACKR.</p>
+            <p style={{ fontSize: '0.82rem', color: 'var(--ghost)', marginBottom: 24, lineHeight: 1.6 }}>Choose which notifications you want from Credimatch.</p>
             {[
               { key: 'expiry', label: 'Offer Expiry Alerts', desc: 'Get notified before tracked offers expire' },
               { key: 'bonus', label: 'New Sign-up Bonus Drops', desc: 'Instant alert for new welcome bonuses' },
@@ -167,7 +167,7 @@ export default function ProfileDashboard() {
 
           {/* Premium Upsell */}
           <div style={{ background: 'linear-gradient(135deg, #1a1f3a, #2a1f3a)', border: '1px solid rgba(232,67,147,0.4)', borderRadius: 'var(--r)', padding: 28 }}>
-            <div style={{ fontFamily: 'var(--mono)', fontSize: '0.65rem', color: 'var(--magenta)', letterSpacing: 2, marginBottom: 12 }}>STACKR PREMIUM</div>
+            <div style={{ fontFamily: 'var(--mono)', fontSize: '0.65rem', color: 'var(--magenta)', letterSpacing: 2, marginBottom: 12 }}>Credimatch PREMIUM</div>
             <h3 style={{ color: 'var(--text-hi)', fontSize: '1.2rem', marginBottom: 12 }}>Unlock Advanced Analytics</h3>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 24 }}>
               {['Full credit health dashboard', 'Personalised card matching (AI)', 'Real-time reward tracking', 'Priority email alerts'].map(f => (
@@ -181,9 +181,11 @@ export default function ProfileDashboard() {
                 UPGRADE — ₹199/mo
               </button>
             ) : (
-              <UPICheckout 
+              <RazorpayCheckout 
+                userId={user.id}
+                token={localStorage.getItem('credimatch_token') || ''}
                 onPaymentSuccess={() => {
-                  alert('Verification pending. Your premium will be unlocked shortly after confirmation.');
+                  alert('Premium Unlocked Successfully!');
                   setShowCheckout(false);
                 }} 
               />

@@ -9,7 +9,11 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 
 app.use(cors());
-app.use(express.json());
+app.use(express.json({
+  verify: (req, res, buf) => {
+    req.rawBody = buf;
+  }
+}));
 
 // Routes
 app.use('/api/auth', require('./routes/auth'));
@@ -32,8 +36,8 @@ const startServer = async () => {
   startCronJobs();
 
   app.listen(PORT, () => {
-    console.log(`[STACKR] Server running at http://localhost:${PORT}`);
-    console.log(`[STACKR] Demo login → test@stackr.com / password`);
+    console.log(`[Credimatch] Server running at http://localhost:${PORT}`);
+    console.log(`[Credimatch] Demo login → test@credimatch.com / password`);
   });
 };
 

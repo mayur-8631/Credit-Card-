@@ -146,15 +146,15 @@ router.get('/apply/:id', async (req, res) => {
       const userId = req.query.uid || null;
       await query(
         'INSERT INTO applications (user_id, card_id, status, affiliate_source) VALUES ($1, $2, $3, $4)',
-        [userId, req.params.id, 'redirected', 'stackr']
+        [userId, req.params.id, 'redirected', 'credimatch']
       ).catch(() => {});
     }
     if (!affiliate_link) {
       const card = FALLBACK_CARDS.find(c => c.id === parseInt(req.params.id));
-      affiliate_link = card?.affiliate_link || 'https://stackr.in';
+      affiliate_link = card?.affiliate_link || 'https://credimatch.in';
     }
     const userId = req.query.uid || null;
-    res.redirect(`${affiliate_link}?utm_source=stackr${userId ? '&user_id='+userId : ''}`);
+    res.redirect(`${affiliate_link}?utm_source=credimatch${userId ? '&user_id='+userId : ''}`);
   } catch (error) {
     console.error(error);
     res.status(500).send('Redirect failed');

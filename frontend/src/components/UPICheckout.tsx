@@ -3,7 +3,7 @@ import { useState } from "react";
 
 export default function UPICheckout({ onPaymentSuccess }: { onPaymentSuccess: () => void }) {
   const upiId = "7823008913-l793-2@ybl";
-  const upiString = `upi://pay?pa=${upiId}&pn=STACKR%20Premium&am=199.00&cu=INR`;
+  const upiString = `upi://pay?pa=${upiId}&pn=Credimatch%20Premium&am=199.00&cu=INR`;
   const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upiString)}`;
 
   return (

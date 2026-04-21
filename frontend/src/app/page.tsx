@@ -27,8 +27,8 @@ export const LOCAL_CARDS = [
 ];
 
 const FAQS = [
-  {q:"How does the Priority Engine work?",a:"You weight five spending categories using the sliders. STACKR runs a weighted-score algorithm across all cards in real time and surfaces the top matches for your unique profile — no two users get the same ranking."},
-  {q:"Does using STACKR hurt my CIBIL score?",a:"Not at all. Browsing and comparing is 100% inquiry-free. A hard pull only occurs when you formally apply through the issuer's own portal — completely outside our platform."},
+  {q:"How does the Priority Engine work?",a:"You weight five spending categories using the sliders. Credimatch runs a weighted-score algorithm across all cards in real time and surfaces the top matches for your unique profile — no two users get the same ranking."},
+  {q:"Does using Credimatch hurt my CIBIL score?",a:"Not at all. Browsing and comparing is 100% inquiry-free. A hard pull only occurs when you formally apply through the issuer's own portal — completely outside our platform."},
   {q:"What does 'Pin to Compare' do?",a:"Pin any two cards from the Deck and a comparison tray appears at the bottom. Hit Compare for a feature-by-feature head-to-head with automatic winner badges on fee fields."},
   {q:"Are the card details here up to date?",a:"Yes — our data team updates fees, rewards and offers weekly. Always double-check with the issuer before applying, as terms can change overnight."},
 ];
@@ -95,7 +95,7 @@ export default function Home() {
       else next = prev;
       // Save names to localStorage for profile page
       const names = next.map(pid => LOCAL_CARDS.find(x => x.id === pid)?.name).filter(Boolean);
-      localStorage.setItem('stackr_pinned_cards', JSON.stringify(names));
+      localStorage.setItem('credimatch_pinned_cards', JSON.stringify(names));
       return next;
     });
   };
@@ -145,7 +145,7 @@ export default function Home() {
       <section className="hero">
         <div className="hero-tag">Intelligent Card Selection</div>
         <h1>PICK<br/><span className="outline">SMARTER</span><br/>CARDS.</h1>
-        <p className="hero-sub">STACKR ranks every card in India using <strong>your</strong> spending DNA. No guesswork. No scrolling through 200 options. Just the right card — instantly.</p>
+        <p className="hero-sub">Credimatch ranks every card in India using <strong>your</strong> spending DNA. No guesswork. No scrolling through 200 options. Just the right card — instantly.</p>
         <div className="hero-float">
           <div className="f-num">50+</div>
           <div className="f-lab">CARDS ANALYSED IN REAL-TIME</div>

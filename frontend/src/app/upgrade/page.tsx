@@ -10,7 +10,7 @@ export default function UpgradePage() {
   const [successMode, setSuccessMode] = useState<boolean>(false);
 
   useEffect(() => {
-    const t = localStorage.getItem('stackr_token') || localStorage.getItem('token');
+    const t = localStorage.getItem('credimatch_token') || localStorage.getItem('token');
     const u = localStorage.getItem('user');
     if (t) setToken(t);
     if (u) {
@@ -43,7 +43,7 @@ export default function UpgradePage() {
       <main style={{ textAlign: "center", paddingTop: "150px", minHeight: "100vh", position: "relative", zIndex: 1 }}>
         <h1 style={{ fontFamily: "var(--display)", fontSize: "clamp(4rem, 8vw, 6rem)", color: "var(--cyan)", letterSpacing: "1px", textShadow: "0 0 20px var(--cyan-glow)" }}>PRO ACTIVATED 🎉</h1>
         <p style={{ fontFamily: "var(--mono)", fontSize: "1.1rem", margin: "20px auto 40px", color: "var(--text)", maxWidth: "500px", lineHeight: "1.6" }}>
-          Welcome to the elite tier of STACKR. Your payment was successful and all Pro features are unleashed.
+          Welcome to the elite tier of Credimatch. Your payment was successful and all Pro features are unleashed.
         </p>
         <a href="/profile" className="cta-pill" style={{ fontSize: "1rem", padding: "12px 32px" }}>Access Pro Dashboard</a>
       </main>
@@ -60,7 +60,7 @@ export default function UpgradePage() {
         </div>
         <h1 style={{ fontFamily: "var(--display)", fontSize: "clamp(3.5rem, 8vw, 5rem)", marginBottom: "16px", color: "var(--text-hi)", lineHeight: "1", letterSpacing: "0.5px" }}>Upgrade Your <span style={{ color: "var(--cyan)", textShadow: "0 0 15px var(--cyan-glow)" }}>Experience</span></h1>
         <p style={{ fontFamily: "var(--mono)", color: "var(--text)", fontSize: "0.9rem", lineHeight: "1.7", opacity: 0.8 }}>
-          Unlock the full quantitative power of STACKR Card Intelligence. 
+          Unlock the full quantitative power of Credimatch Card Intelligence. 
         </p>
       </header>
 
@@ -93,7 +93,7 @@ export default function UpgradePage() {
         <div style={{ flex: "1 1 300px", maxWidth: "450px", background: "var(--ink3)", border: "1px solid var(--cyan)", borderRadius: "var(--r)", padding: "40px", position: "relative", display: "flex", flexDirection: "column", boxShadow: "0 0 30px var(--cyan-dim)" }}>
           <div style={{ position: "absolute", top: "-14px", right: "25px", background: "linear-gradient(135deg, var(--cyan), #00bcd4)", color: "var(--ink)", padding: "6px 16px", borderRadius: "50px", fontFamily: "var(--mono)", fontSize: "0.65rem", fontWeight: "bold", letterSpacing: "1px", boxShadow: "0 0 15px var(--cyan-glow)" }}>RECOMMENDED</div>
           
-          <h2 style={{ fontFamily: "var(--display)", fontSize: "2.5rem", marginBottom: "5px", color: "var(--cyan)", letterSpacing: "0.5px" }}>STACKR Pro</h2>
+          <h2 style={{ fontFamily: "var(--display)", fontSize: "2.5rem", marginBottom: "5px", color: "var(--cyan)", letterSpacing: "0.5px" }}>Credimatch Pro</h2>
           <div style={{ fontFamily: "var(--body)", fontSize: "1.5rem", marginBottom: "30px", color: "var(--text-hi)", fontWeight: "bold" }}>₹999 <span style={{ fontSize: "1rem", color: "rgba(255,255,255,0.6)", fontWeight: "normal" }}>/ year</span></div>
           
           <ul style={{ listStyle: "none", padding: 0, margin: "0 0 40px", display: "flex", flexDirection: "column", gap: "16px", flex: 1 }}>

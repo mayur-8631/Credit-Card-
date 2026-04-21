@@ -35,3 +35,9 @@ backend/.env
 frontend/.next/
 frontend/node_modules/
 backend/node_modules/
+
+# Runtime data — do not commit
+backend/users.json
+
+# Standalone HTML builds
+credimatch.html

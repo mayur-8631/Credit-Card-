@@ -2,7 +2,7 @@
 setlocal
 
 rem ------------------------------------------------------------
-rem  Easy one‑click starter for STACKR (Windows)
+rem  Easy one‑click starter for Credimatch (Windows)
 rem  - Starts Docker containers (Postgres + Redis)
 rem  - Installs backend & frontend deps if missing
 rem  - Launches backend (node src/server.js) in its own console
@@ -22,7 +22,7 @@ if not exist node_modules (
   echo Backend dependencies already installed.
 )
 rem Launch backend in a new console window
-start "STACKR Backend" cmd /k "node src/server.js"
+start "Credimatch Backend" cmd /k "node src/server.js"
 popd
 
 rem ---- 3️⃣ Frontend ------------------------------------------------------
@@ -34,7 +34,7 @@ if not exist node_modules (
   echo Frontend dependencies already installed.
 )
 rem Launch Next.js dev server in a new console window
-start "STACKR Frontend" cmd /k "npm run dev"
+start "Credimatch Frontend" cmd /k "npm run dev"
 popd
 
 echo.

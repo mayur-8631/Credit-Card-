@@ -4,10 +4,10 @@ const fs = require('fs');
 const path = require('path');
 
 const pool = new Pool({
-  user: process.env.POSTGRES_USER || 'stackr_user',
+  user: process.env.POSTGRES_USER || 'credimatch_user',
   host: process.env.POSTGRES_HOST || 'localhost',
-  database: process.env.POSTGRES_DB || 'stackr_db',
-  password: process.env.POSTGRES_PASSWORD || 'stackr_password',
+  database: process.env.POSTGRES_DB || 'credimatch_db',
+  password: process.env.POSTGRES_PASSWORD || 'credimatch_password',
   port: process.env.POSTGRES_PORT || 5432,
 });
 

@@ -9,7 +9,7 @@ const syne = Syne({ subsets: ['latin'], variable: '--body' })
 const plexMono = IBM_Plex_Mono({ weight: ['300', '400', '500'], subsets: ['latin'], variable: '--mono' })
 
 export const metadata: Metadata = {
-  title: 'STACKR — Intelligent Card Intelligence',
+  title: 'Credimatch — Intelligent Card Intelligence',
   description: 'Intelligent credit card recommendation and comparison platform.',
 }
 

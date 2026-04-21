@@ -8,7 +8,7 @@ const userStore = require('../db/user-store');
 
 const RAZORPAY_KEY_ID = process.env.RAZORPAY_KEY_ID || 'rzp_test_placeholder_key_id';
 const RAZORPAY_KEY_SECRET = process.env.RAZORPAY_KEY_SECRET || 'rzp_test_placeholder_key_secret';
-const RAZORPAY_WEBHOOK_SECRET = process.env.RAZORPAY_WEBHOOK_SECRET || 'stackr_webhook_secret';
+const RAZORPAY_WEBHOOK_SECRET = process.env.RAZORPAY_WEBHOOK_SECRET || 'credimatch_webhook_secret';
 
 const razorpayInstance = new Razorpay({
   key_id: RAZORPAY_KEY_ID,
@@ -48,8 +48,8 @@ router.get('/status', authMiddleware, async (req, res) => {
 // ── Create Order ──────────────────────────────────────────────────────────────
 router.post('/create-order', authMiddleware, async (req, res) => {
   try {
-    // Pro plan is ₹999 / year
-    const amount = 999 * 100; // in paise
+    // Pro plan is ₹199 / month or year
+    const amount = 199 * 100; // in paise
     const currency = 'INR';
 
     const options = {
@@ -121,10 +121,12 @@ router.post('/webhook', express.raw({ type: 'application/json' }), async (req, r
   const secret = RAZORPAY_WEBHOOK_SECRET;
 
   const shasum = crypto.createHmac('sha256', secret);
-  // Re-stringify the body to verify. This requires express to NOT parse body beforehand,
-  // Or we just verify using req.rawBody if configured. 
-  // Given we use express.json() globally in server.js, we should handle stringification
-  shasum.update(JSON.stringify(req.body));
+  // verify using req.rawBody correctly
+  if (req.rawBody) {
+    shasum.update(req.rawBody);
+  } else {
+    shasum.update(JSON.stringify(req.body));
+  }
   const digest = shasum.digest('hex');
 
   const providedSignature = req.headers['x-razorpay-signature'];

@@ -20,7 +20,7 @@ export default function MyCards() {
   });
 
   useEffect(() => {
-    const token = localStorage.getItem('stackr_token');
+    const token = localStorage.getItem('credimatch_token');
     if (!token) { window.location.href = '/login'; return; }
 
     fetch('http://localhost:4000/api/cards/user', {
@@ -32,7 +32,7 @@ export default function MyCards() {
   }, []);
 
   const handleCreate = async () => {
-    const token = localStorage.getItem('stackr_token');
+    const token = localStorage.getItem('credimatch_token');
     setError('');
     try {
       const res = await fetch('http://localhost:4000/api/cards/user', {

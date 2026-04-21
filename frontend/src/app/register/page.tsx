@@ -21,7 +21,7 @@ export default function Register() {
       });
       const data = await res.json();
       if (res.ok) {
-        localStorage.setItem('stackr_token', data.token);
+        localStorage.setItem('credimatch_token', data.token);
         window.location.href = '/profile';
       } else {
         setError(data.error || 'Registration failed. Please try again.');
@@ -38,7 +38,7 @@ export default function Register() {
       <BackgroundCanvas />
       <div style={{ position: 'relative', zIndex: 1, padding: '120px clamp(28px, 6vw, 80px) 60px', minHeight: '80vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <div style={{ background: 'var(--ink2)', border: '1px solid var(--ghost)', borderRadius: 'var(--r)', padding: 40, width: '100%', maxWidth: 450 }}>
-          <h2 style={{ fontFamily: 'var(--display)', fontSize: '2.5rem', color: 'var(--text-hi)', textAlign: 'center', marginBottom: 30 }}>JOIN <span style={{ color: 'var(--magenta)' }}>STACKR</span></h2>
+          <h2 style={{ fontFamily: 'var(--display)', fontSize: '2.5rem', color: 'var(--text-hi)', textAlign: 'center', marginBottom: 30 }}>JOIN <span style={{ color: 'var(--magenta)' }}>Credimatch</span></h2>
 
           <form onSubmit={registerUser}>
             <div style={{ marginBottom: 20 }}>

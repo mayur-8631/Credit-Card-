@@ -6,7 +6,7 @@ const { query } = require('../db');
 const authMiddleware = require('../middleware/auth');
 const userStore = require('../db/user-store');
 
-const JWT_SECRET = process.env.JWT_SECRET || 'stackr_super_secret';
+const JWT_SECRET = process.env.JWT_SECRET || 'credimatch_super_secret';
 
 const isDbAvailable = async () => {
   try {

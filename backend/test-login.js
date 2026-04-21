@@ -1,7 +1,7 @@
 fetch('http://localhost:4000/api/auth/login', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ email: 'test@stackr.com', password: 'password' })
+  body: JSON.stringify({ email: 'test@credimatch.com', password: 'password' })
 })
   .then(r => r.json())
   .then(d => {

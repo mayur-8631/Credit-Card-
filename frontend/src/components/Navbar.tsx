@@ -6,7 +6,7 @@ export default function Navbar() {
       <div className="topbar-left">
         <div className="logo-mark"></div>
         <div className="logo-word">
-          <Link href="/">STACKR<span>.</span></Link>
+          <Link href="/">Credimatch<span>.</span></Link>
         </div>
       </div>
       <div className="topbar-center">CARD INTELLIGENCE PLATFORM</div>

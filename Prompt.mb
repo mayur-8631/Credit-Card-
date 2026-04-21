@@ -1,4 +1,4 @@
-Build a production-grade fintech web application called "STACKR" — an intelligent credit card recommendation and comparison platform for Indian users.
+Build a production-grade fintech web application called "Credimatch" — an intelligent credit card recommendation and comparison platform for Indian users.
 
 The product must not be a UI demo. It must function as a real-world, data-driven, personalized decision engine with backend infrastructure, APIs, user accounts, and monetization via affiliate integrations.
 
@@ -324,7 +324,7 @@ This is monetization core.
 * Log click in "applications" table
 * Append tracking params:
 
-  * utm_source=stackr
+  * utm_source=credimatch
   * user_id
 
 4. Redirect to bank page

@@ -63,7 +63,7 @@ export default function CalculatorPage() {
           CASHBACK <span style={{ color: 'var(--cyan)' }}>CALCULATOR</span>
         </h1>
         <p style={{ maxWidth: 600, marginTop: 12, lineHeight: 1.7, color: 'var(--text)' }}>
-          Enter your average monthly spending. STACKR calculates your exact ₹ returns for every card — monthly and yearly.
+          Enter your average monthly spending. Credimatch calculates your exact ₹ returns for every card — monthly and yearly.
         </p>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 32, marginTop: 50 }}>

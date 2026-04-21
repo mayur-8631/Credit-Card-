@@ -50,7 +50,7 @@ export default function RazorpayCheckout({ userId, token, onPaymentSuccess }: { 
         key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || "rzp_test_placeholder_key_id",
         amount: orderData.amount,
         currency: orderData.currency,
-        name: "STACKR Pro",
+        name: "Credimatch Pro",
         description: "Yearly Pro Subscription",
         order_id: orderData.id,
         handler: async function (response: any) {
@@ -77,10 +77,10 @@ export default function RazorpayCheckout({ userId, token, onPaymentSuccess }: { 
         },
         prefill: {
           name: "User",
-          email: "user@stackr.com"
+          email: "user@credimatch.com"
         },
         theme: {
-          color: "#CCFF00" // STACKR accent color
+          color: "#CCFF00" // Credimatch accent color
         }
       };
 

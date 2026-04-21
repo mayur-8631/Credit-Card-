@@ -21,7 +21,7 @@ export default function Login() {
       });
       const data = await res.json();
       if (res.ok) {
-        localStorage.setItem('stackr_token', data.token);
+        localStorage.setItem('credimatch_token', data.token);
         window.location.href = '/profile';
       } else {
         setError(data.error || 'Login failed. Please try again.');
@@ -42,7 +42,7 @@ export default function Login() {
 
           {/* Demo credentials hint */}
           <div style={{ background: 'rgba(0,200,200,0.08)', border: '1px solid rgba(0,200,200,0.25)', borderRadius: 8, padding: '10px 14px', marginBottom: 24, fontSize: '0.78rem', color: 'var(--cyan)', textAlign: 'center' }}>
-            Demo: <strong>test@stackr.com</strong> / <strong>password</strong>
+            Demo: <strong>test@credimatch.com</strong> / <strong>password</strong>
           </div>
 
           <form onSubmit={login}>

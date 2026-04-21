@@ -41,7 +41,7 @@ const seedTestUser = async () => {
     const user = {
       id: nextId++,
       name: 'Test User',
-      email: 'test@stackr.com',
+      email: 'test@credimatch.com',
       password_hash: hash,
       monthly_income: 75000,
       credit_score: 750,
@@ -50,7 +50,7 @@ const seedTestUser = async () => {
     };
     users.push(user);
     save();
-    console.log('[UserStore] Demo account seeded → test@stackr.com / password');
+    console.log('[UserStore] Demo account seeded → test@credimatch.com / password');
   }
 };
 
