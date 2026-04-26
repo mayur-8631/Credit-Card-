@@ -79,11 +79,11 @@ export default function UpgradePage() {
           <div style={{ fontFamily: "var(--mono)", fontSize: "1.2rem", marginBottom: "30px", color: "rgba(255,255,255,0.6)" }}>Free forever</div>
           
           <ul style={{ listStyle: "none", padding: 0, margin: "0 0 40px", display: "flex", flexDirection: "column", gap: "16px", flex: 1 }}>
-            <li style={{ display: "flex", alignItems: "center", gap: "12px", fontFamily: "var(--body)", fontSize: "0.9rem", color: "var(--text)" }}><Check size={18} color="var(--magenta)" /> Track up to 2 Credit Cards</li>
+            <li style={{ display: "flex", alignItems: "center", gap: "12px", fontFamily: "var(--body)", fontSize: "0.9rem", color: "var(--text)" }}><Check size={18} color="var(--magenta)" /> Smart Priority Engine</li>
             <li style={{ display: "flex", alignItems: "center", gap: "12px", fontFamily: "var(--body)", fontSize: "0.9rem", color: "var(--text)" }}><Check size={18} color="var(--magenta)" /> Basic Plan Comparison</li>
-            <li style={{ display: "flex", alignItems: "center", gap: "12px", fontFamily: "var(--body)", fontSize: "0.9rem", color: "var(--text)", opacity: 0.4 }}><X size={18} /> Advanced AI Recommendations</li>
-            <li style={{ display: "flex", alignItems: "center", gap: "12px", fontFamily: "var(--body)", fontSize: "0.9rem", color: "var(--text)", opacity: 0.4 }}><X size={18} /> Smart Timing Alerts</li>
-            <li style={{ display: "flex", alignItems: "center", gap: "12px", fontFamily: "var(--body)", fontSize: "0.9rem", color: "var(--text)", opacity: 0.4 }}><X size={18} /> Unlimited Cards Logging</li>
+            <li style={{ display: "flex", alignItems: "center", gap: "12px", fontFamily: "var(--body)", fontSize: "0.9rem", color: "var(--text)", opacity: 0.4 }}><X size={18} /> Smart Timing Alerts (Full)</li>
+            <li style={{ display: "flex", alignItems: "center", gap: "12px", fontFamily: "var(--body)", fontSize: "0.9rem", color: "var(--text)", opacity: 0.4 }}><X size={18} /> Ad-Free Experience</li>
+            <li style={{ display: "flex", alignItems: "center", gap: "12px", fontFamily: "var(--body)", fontSize: "0.9rem", color: "var(--text)", opacity: 0.4 }}><X size={18} /> Exclusive Partner Deals</li>
           </ul>
 
           <button style={{ width: "100%", padding: "14px", borderRadius: "50px", background: "var(--ink4)", color: "rgba(255,255,255,0.4)", fontFamily: "var(--body)", fontSize: "0.9rem", fontWeight: 600, border: "1px solid var(--ghost)" }} disabled>Current Plan</button>
@@ -94,12 +94,12 @@ export default function UpgradePage() {
           <div style={{ position: "absolute", top: "-14px", right: "25px", background: "linear-gradient(135deg, var(--cyan), #00bcd4)", color: "var(--ink)", padding: "6px 16px", borderRadius: "50px", fontFamily: "var(--mono)", fontSize: "0.65rem", fontWeight: "bold", letterSpacing: "1px", boxShadow: "0 0 15px var(--cyan-glow)" }}>RECOMMENDED</div>
           
           <h2 style={{ fontFamily: "var(--display)", fontSize: "2.5rem", marginBottom: "5px", color: "var(--cyan)", letterSpacing: "0.5px" }}>Credimatch Pro</h2>
-          <div style={{ fontFamily: "var(--body)", fontSize: "1.5rem", marginBottom: "30px", color: "var(--text-hi)", fontWeight: "bold" }}>₹999 <span style={{ fontSize: "1rem", color: "rgba(255,255,255,0.6)", fontWeight: "normal" }}>/ year</span></div>
+          <div style={{ fontFamily: "var(--body)", fontSize: "1.5rem", marginBottom: "30px", color: "var(--text-hi)", fontWeight: "bold" }}>₹199 <span style={{ fontSize: "1rem", color: "rgba(255,255,255,0.6)", fontWeight: "normal" }}>/ mo</span></div>
           
           <ul style={{ listStyle: "none", padding: 0, margin: "0 0 40px", display: "flex", flexDirection: "column", gap: "16px", flex: 1 }}>
-            <li style={{ display: "flex", alignItems: "center", gap: "12px", fontFamily: "var(--body)", fontSize: "0.9rem", color: "var(--text-hi)" }}><Check size={18} color="var(--cyan)" /> Unlimited Cards Logging</li>
-            <li style={{ display: "flex", alignItems: "center", gap: "12px", fontFamily: "var(--body)", fontSize: "0.9rem", color: "var(--text-hi)" }}><Check size={18} color="var(--cyan)" /> Advanced AI Recommendations</li>
             <li style={{ display: "flex", alignItems: "center", gap: "12px", fontFamily: "var(--body)", fontSize: "0.9rem", color: "var(--text-hi)" }}><Check size={18} color="var(--cyan)" /> Smart Timing Alerts</li>
+            <li style={{ display: "flex", alignItems: "center", gap: "12px", fontFamily: "var(--body)", fontSize: "0.9rem", color: "var(--text-hi)" }}><Check size={18} color="var(--cyan)" /> Ad-Free Experience</li>
+            <li style={{ display: "flex", alignItems: "center", gap: "12px", fontFamily: "var(--body)", fontSize: "0.9rem", color: "var(--text-hi)" }}><Check size={18} color="var(--cyan)" /> Exclusive Partner Deals</li>
             <li style={{ display: "flex", alignItems: "center", gap: "12px", fontFamily: "var(--body)", fontSize: "0.9rem", color: "var(--text-hi)" }}><Check size={18} color="var(--cyan)" /> Early Access to New Features</li>
             <li style={{ display: "flex", alignItems: "center", gap: "12px", fontFamily: "var(--body)", fontSize: "0.9rem", color: "var(--text-hi)" }}><Check size={18} color="var(--cyan)" /> Priority Support</li>
           </ul>

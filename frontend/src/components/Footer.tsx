@@ -12,7 +12,7 @@ export default function Footer() {
           <p>Credimatch is India's first priority-driven card intelligence platform. We don't just show you cards — we match them to your life.</p>
         </div>
         <div><h5>Explore</h5><ul><li><Link href="/cards">All Cards</Link></li><li><a href="#">Zero-Fee Cards</a></li><li><a href="#">Travel Cards</a></li><li><a href="#">Cashback Kings</a></li></ul></div>
-        <div><h5>Tools</h5><ul><li><Link href="/">Priority Engine</Link></li><li><Link href="/calculator">Cashback Calc</Link></li><li><Link href="/simulator">Credit Score</Link></li><li><a href="#">EMI Planner</a></li></ul></div>
+        <div><h5>Tools</h5><ul><li><Link href="/">Priority Engine</Link></li><li><Link href="/calculator">Cashback Calc</Link></li><li><Link href="/simulator">Credit Score</Link></li><li><Link href="/timing">Timing Intel</Link></li><li><Link href="/deals">Partner Deals</Link></li></ul></div>
         <div><h5>Company</h5><ul><li><a href="#">About Us</a></li><li><a href="#">Blog</a></li><li><a href="#">Careers</a></li><li><a href="#">Privacy</a></li></ul></div>
       </div>
       <div className="footer-bar">

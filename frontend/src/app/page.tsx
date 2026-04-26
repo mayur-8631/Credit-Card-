@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import BackgroundCanvas from '@/components/BackgroundCanvas';
 import AIInsights from '@/components/AIInsights';
+import useSubscription from '@/hooks/useSubscription';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
 const PRIORITIES = [
@@ -34,6 +35,7 @@ const FAQS = [
 ];
 
 export default function Home() {
+  const { isPro } = useSubscription();
   const [priorities, setPriorities] = useState(PRIORITIES.reduce((acc, p) => ({ ...acc, [p.key]: p.val }), {}));
   const [rankedCards, setRankedCards] = useState<any[]>(LOCAL_CARDS);
   const [pinned, setPinned] = useState<number[]>([]);
@@ -222,7 +224,7 @@ export default function Home() {
                   <div className="card3-inner">
                     <div className="card-front" style={{ background: c.grad, border: '1px solid rgba(255,255,255,.07)' }}>
                       <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: c.acc, borderRadius: '18px 18px 0 0' }}></div>
-                      {(c as any).sponsored && (
+                      {!isPro && (c as any).sponsored && (
                         <div style={{ position: 'absolute', top: 12, right: 12, background: 'var(--magenta)', color: '#fff', fontSize: '0.55rem', padding: '3px 8px', borderRadius: 10, fontWeight: 700, letterSpacing: 1 }}>SPONSORED</div>
                       )}
                       <div className="cf-top">

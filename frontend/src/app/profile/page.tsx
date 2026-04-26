@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import BackgroundCanvas from '@/components/BackgroundCanvas';
 import RazorpayCheckout from '@/components/RazorpayCheckout';
+import useSubscription from '@/hooks/useSubscription';
 
 const PINNED_KEY = 'credimatch_pinned_cards';
 
@@ -15,6 +16,7 @@ export default function ProfileDashboard() {
   const [saved, setSaved] = useState(false);
   const [alertPrefs, setAlertPrefs] = useState({ expiry: true, bonus: true, weekly: false });
   const [showCheckout, setShowCheckout] = useState(false);
+  const { isPro } = useSubscription();
 
   useEffect(() => {
     const token = localStorage.getItem('credimatch_token');
@@ -165,32 +167,59 @@ export default function ProfileDashboard() {
           </div>
 
 
-          {/* Premium Upsell */}
-          <div style={{ background: 'linear-gradient(135deg, #1a1f3a, #2a1f3a)', border: '1px solid rgba(232,67,147,0.4)', borderRadius: 'var(--r)', padding: 28 }}>
-            <div style={{ fontFamily: 'var(--mono)', fontSize: '0.65rem', color: 'var(--magenta)', letterSpacing: 2, marginBottom: 12 }}>Credimatch PREMIUM</div>
-            <h3 style={{ color: 'var(--text-hi)', fontSize: '1.2rem', marginBottom: 12 }}>Unlock Advanced Analytics</h3>
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 24 }}>
-              {['Full credit health dashboard', 'Personalised card matching (AI)', 'Real-time reward tracking', 'Priority email alerts'].map(f => (
-                <li key={f} style={{ fontSize: '0.85rem', color: 'var(--text)', display: 'flex', gap: 8 }}><span style={{ color: 'var(--magenta)' }}>✦</span>{f}</li>
-              ))}
-            </ul>
-            {!showCheckout ? (
+          {/* Premium Upsell or Status */}
+          {isPro ? (
+            <div style={{ background: 'linear-gradient(135deg, #0d1a25, #1a2a3a)', border: '1px solid rgba(0,229,255,0.4)', borderRadius: 'var(--r)', padding: 28 }}>
+              <div style={{ fontFamily: 'var(--mono)', fontSize: '0.65rem', color: 'var(--cyan)', letterSpacing: 2, marginBottom: 12 }}>PRO PLAN ACTIVE</div>
+              <h3 style={{ color: 'var(--text-hi)', fontSize: '1.2rem', marginBottom: 12 }}>You are a Pro Member</h3>
+              <p style={{ fontSize: '0.85rem', color: 'var(--ghost)', lineHeight: 1.6, marginBottom: 20 }}>
+                You have full access to Smart Timing Alerts, Ad-Free Experience, and Exclusive Partner Deals.
+              </p>
               <button 
-                onClick={() => setShowCheckout(true)}
-                style={{ width: '100%', padding: '12px', background: 'var(--magenta)', border: 'none', borderRadius: 8, color: '#fff', fontWeight: 700, fontSize: '0.85rem', cursor: 'pointer', letterSpacing: 1 }}>
-                UPGRADE — ₹199/mo
+                onClick={() => window.location.href = '/deals'}
+                style={{ width: '100%', padding: '12px', background: 'transparent', border: '1px solid var(--cyan)', borderRadius: 8, color: 'var(--cyan)', fontWeight: 700, fontSize: '0.85rem', cursor: 'pointer', letterSpacing: 1 }}>
+                EXPLORE PRO DEALS
               </button>
-            ) : (
-              <RazorpayCheckout 
-                userId={user.id}
-                token={localStorage.getItem('credimatch_token') || ''}
-                onPaymentSuccess={() => {
-                  alert('Premium Unlocked Successfully!');
-                  setShowCheckout(false);
-                }} 
-              />
-            )}
-          </div>
+            </div>
+          ) : (
+            <div style={{ background: 'linear-gradient(135deg, #1a1f3a, #2a1f3a)', border: '1px solid rgba(232,67,147,0.4)', borderRadius: 'var(--r)', padding: 28 }}>
+              <div style={{ fontFamily: 'var(--mono)', fontSize: '0.65rem', color: 'var(--magenta)', letterSpacing: 2, marginBottom: 12 }}>Credimatch PREMIUM</div>
+              <h3 style={{ color: 'var(--text-hi)', fontSize: '1.2rem', marginBottom: 12 }}>Unlock Pro Benefits</h3>
+              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 24 }}>
+                {[
+                  { label: 'Smart Timing Alerts — AI application windows', link: '/timing' },
+                  { label: 'Ad-Free Experience — No sponsored placements', link: '/' },
+                  { label: 'Exclusive Partner Deals — Cashback & discounts', link: '/deals' },
+                  { label: 'Full credit health dashboard', link: null },
+                  { label: 'Personalised card matching (AI)', link: null },
+                  { label: 'Real-time reward tracking', link: null },
+                  { label: 'Priority email alerts', link: null },
+                ].map(f => (
+                  <li key={f.label} style={{ fontSize: '0.85rem', color: 'var(--text)', display: 'flex', gap: 8, cursor: f.link ? 'pointer' : 'default' }}
+                      onClick={() => f.link && (window.location.href = f.link)}>
+                    <span style={{ color: 'var(--magenta)' }}>✦</span>
+                    <span>{f.label}{f.link ? ' →' : ''}</span>
+                  </li>
+                ))}
+              </ul>
+              {!showCheckout ? (
+                <button 
+                  onClick={() => setShowCheckout(true)}
+                  style={{ width: '100%', padding: '12px', background: 'var(--magenta)', border: 'none', borderRadius: 8, color: '#fff', fontWeight: 700, fontSize: '0.85rem', cursor: 'pointer', letterSpacing: 1 }}>
+                  UPGRADE — ₹199/mo
+                </button>
+              ) : (
+                <RazorpayCheckout 
+                  userId={user.id}
+                  token={localStorage.getItem('credimatch_token') || ''}
+                  onPaymentSuccess={() => {
+                    alert('Premium Unlocked Successfully! Please refresh the page to see your Pro status.');
+                    setShowCheckout(false);
+                  }} 
+                />
+              )}
+            </div>
+          )}
 
         </div>
       </div>

@@ -37,8 +37,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .logo-mark::after{inset:0;background:var(--magenta);clip-path:polygon(32% 0,100% 0,100% 100%,0 100%);opacity:.7}
 .logo-word{font-family:var(--display);font-size:1.45rem;letter-spacing:4px;color:var(--text-hi)}
 .logo-word span{color:var(--cyan)}
-.topbar-center{font-family:var(--mono);font-size:.65rem;color:var(--cyan);letter-spacing:2px;opacity:.75}
-.topbar-right{display:flex;align-items:center;justify-content:flex-end;gap:22px}
+.topbar-center{font-family:var(--mono);font-size:.65rem;color:var(--cyan);letter-spacing:2px;opacity:.75;white-space:nowrap}
+.topbar-right{display:flex;align-items:center;justify-content:flex-end;gap:18px;padding-left:18px;border-left:1px solid var(--ghost);margin-left:18px}
 .topbar-right a{font-size:.78rem;color:var(--text);letter-spacing:.5px;transition:color .2s}
 .topbar-right a:hover{color:var(--cyan)}
 .cta-pill{

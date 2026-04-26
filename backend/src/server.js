@@ -20,6 +20,7 @@ app.use('/api/auth', require('./routes/auth'));
 app.use('/api/subscription', require('./routes/subscription'));
 app.use('/api/cards', require('./routes/cards'));
 app.use('/api/timing', require('./routes/timing'));
+app.use('/api/deals', require('./routes/deals'));
 
 app.get('/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date() });

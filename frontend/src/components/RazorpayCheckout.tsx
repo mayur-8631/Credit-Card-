@@ -44,7 +44,33 @@ export default function RazorpayCheckout({ userId, token, onPaymentSuccess }: { 
         };
       }
 
-      // 2. Open Razorpay Checkout Window
+      // 2. Open Razorpay Checkout Window or Simulate if Mock
+      if (orderData.id && orderData.id.startsWith("order_mock_")) {
+        console.log("Mock Order detected. Simulating Razorpay success...");
+        try {
+          const verifyRes = await fetch("http://localhost:4000/api/subscription/verify-payment", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
+            body: JSON.stringify({
+              razorpay_order_id: orderData.id,
+              razorpay_payment_id: "pay_mock_" + Math.floor(Math.random()*10000),
+              razorpay_signature: "mock_signature"
+            })
+          });
+
+          const verifyData = await verifyRes.json();
+          if (verifyRes.ok && verifyData.success) {
+            onPaymentSuccess();
+          } else {
+            setError("Payment verification failed.");
+          }
+        } catch (err) {
+          setError("Error verifying the mock payment.");
+        }
+        setLoading(false);
+        return;
+      }
+
       const options = {
         // We use a dummy key here or read from ENV ideally. NextJS public env `process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID`
         key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || "rzp_test_placeholder_key_id",
